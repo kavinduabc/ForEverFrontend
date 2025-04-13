@@ -6,6 +6,7 @@ const Login = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [role,setRole] = useState("")
   const [currentState, setCurrentState] = useState('Login')
 
   const onSubmitHandler = async (e) => {
@@ -17,7 +18,8 @@ const Login = () => {
         await axios.post('http://localhost:4000/api/user', {
           name,
           email,
-          password
+          password,
+          role
         })
         toast.success("Registration Successful")
         setCurrentState('Login')
@@ -48,6 +50,7 @@ const Login = () => {
         </div>
 
         {currentState === "Login" ? null : (
+          <>
           <input
             type='text'
             value={name}
@@ -56,6 +59,15 @@ const Login = () => {
             placeholder='Name'
             required
           />
+          <input
+            type='text'
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className='w-full px-3 py-2 border border-gray-800'
+            placeholder='role'
+            required
+          />
+          </>
         )}
         <input
           type='email'
