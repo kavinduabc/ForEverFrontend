@@ -64,7 +64,7 @@ const Login = () => {
             value={role}
             onChange={(e) => setRole(e.target.value)}
             className='w-full px-3 py-2 border border-gray-800'
-            placeholder='role'
+            placeholder='Role'
             required
           />
           </>
