@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
   const [name, setName] = useState("")
@@ -8,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("")
   const [role,setRole] = useState("")
   const [currentState, setCurrentState] = useState('Login')
+  const navigate = useNavigate()
 
   const onSubmitHandler = async (e) => {
     e.preventDefault()
@@ -28,14 +30,26 @@ const Login = () => {
         toast.error(err?.response?.data?.error || "Registration Failed")
       }
     } else {
-      // Login
+      
       try {
-        await axios.post('http://localhost:4000/api/user/login', {
+        const res = await axios.post('http://localhost:4000/api/user/login', {
           email,
           password
         })
+        console.log(res) 
         toast.success("Login Successful")
+        const user = res.data.user;
+
+        localStorage.setItem("token",res.data.token)
+
+        if(user.role === "admin"){
+          navigate("/admin/");
+        }
+        else{
+          navigate("/");
+        }
       } catch (err) {
+        console.log(err)
         toast.error(err?.response?.data?.error || "Login Failed")
       }
     }
