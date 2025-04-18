@@ -15,7 +15,7 @@ import SearchBar from './Componnets/SearchBar'
 //toastContainer using for notification in react project 
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Admin from './admin/Admin'
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -39,11 +39,7 @@ function App() {
       </Routes>
       <Footer/>
      </div>
-     <div>
-     <Routes>
-        <Route path='/admin' element={<Admin/>} />
-      </Routes>
-     </div>
+    
     </>
   )
 }

@@ -37,7 +37,7 @@ const Login = () => {
           password
         })
         console.log(res) 
-        toast.success("Login Successful")
+        toast.success("Login Successfull")
         const user = res.data.user;
 
         localStorage.setItem("token",res.data.token)
