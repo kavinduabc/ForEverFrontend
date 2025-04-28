@@ -80,7 +80,7 @@ const Collec = () => {
  //for sub category
  useEffect(()=>{
    applyFilter();
- },[category,SubCategory,search,showSearch])
+ },[category,SubCategory,search,showSearch,products])
 
  useEffect(()=>{
   sortProduct();
